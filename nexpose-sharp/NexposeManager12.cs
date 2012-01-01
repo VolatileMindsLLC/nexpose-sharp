@@ -350,9 +350,12 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument GetRoleDetails(string roleID)
+		public XmlDocument GetRoleDetails(string roleName)
 		{
-			string cmd = "<RoleDetailsRequest session-id=\"" + _session.SessionID + "\" role-id=\"" + roleID + "\" />";
+			string cmd = "<RoleDetailsRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + "<Role name=\"" + name + "\" />";
+			cmd = cmd + "</RoleDetailsRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
@@ -372,18 +375,23 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument DeleteRole(string roleID)
+		public XmlDocument DeleteRole(string roleName)
 		{
-			string cmd = "<RoleDeleteRequest session-id=\"" + _session.SessionID + "\" role-id=\"" + roleID + "\" />";
+			string cmd = "<RoleDeleteRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + "<Role name=\"" + roleName + "\" />";
+			cmd = cmd + "</RoleDeleteRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
 			return doc;
 		}
 		
-		public XmlDocument CreateEnginePool()
+		public XmlDocument CreateEnginePool(XmlNode pool)
 		{
-			string cmd = "<EnginePoolCreateRequest session-id=\"" + _session.SessionID + "\" />";
+			string cmd = "<EnginePoolCreateRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + pool.OuterXml + "</EnginePoolCreateRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
@@ -399,9 +407,11 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument GetEnginePoolDetails(string enginePoolID)
+		public XmlDocument GetEnginePoolDetails(string enginePoolName)
 		{
-			string cmd = "<EnginePolleDetailsRequest session-id=\"" + _session.SessionID + "\" pool-id=\"" + enginePoolID + "\" />";
+			string cmd = "<EnginePoolDetailsRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + "<EnginePool name=\"" + enginePoolName + "\" /></EnginePoolDetailsRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
@@ -421,9 +431,11 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument DeleteEnginePool(string enginePoolID)
+		public XmlDocument DeleteEnginePool(string enginePoolname)
 		{
-			string cmd = "<EnginePoolDeleteRequest session-id=\"" + _session.SessionID + "\" pool-id=\"" + enginePoolID + "\" />";
+			string cmd = "<EnginePoolDeleteRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + "<EnginePool name=\"" + enginePoolname + "\" /></EnginePoolDeleteRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
