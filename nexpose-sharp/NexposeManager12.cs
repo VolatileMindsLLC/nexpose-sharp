@@ -164,7 +164,7 @@ namespace nexposesharp
 		
 		public XmlDocument UpdateCommentForVulnerabilityException(string vulnExceptionID, string reviewerComment, string submitterComment)
 		{
-			string cmd = "<VulnerabilityExceptionUpdateCommentRequest session-id=\"" + _session.SessionID + "\" >";
+			string cmd = "<VulnerabilityExceptionUpdateCommentRequest session-id=\"" + _session.SessionID + "\" exception-id=\"" + vulnExceptionID + "\" >";
 			
 			cmd = cmd + "<reviewer-comment>" + reviewerComment + "</reviewer-comment>";
 			cmd = cmd + "<submitter-comment>" + submitterComment + "</submitter-comment>";
@@ -177,16 +177,19 @@ namespace nexposesharp
 		
 		public XmlDocument UpdateExpiryDateForVulnerabilityException(string vulnExceptionID, string date)
 		{
-			string cmd = "<VulnerabilityExceptionUpdateExpiryDateRequest session-id=\"" + _session.SessionID + "\" expiration-date=\"" + date + "\" />";
+			string cmd = "<VulnerabilityExceptionUpdateExpiryDateRequest session-id=\"" + _session.SessionID + "\" exception-id=\"" + vulnExceptionID + "\" expiration-date=\"" + date + "\" />";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
 			return doc;
 		}
 		
-		public XmlDocument CreateMultiTenantUser()
+		public XmlDocument CreateMultiTenantUser(XmlNode userConfig)
 		{
-			string cmd = "<CreateMultiTenantUserRequest session-id=\"" + _session.SessionID + "\" />";
+			string cmd = "<CreateMultiTenantUserRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + userConfig.OuterXml;
+			cmd = cmd + "<CreateMultiTenantUserRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
@@ -232,9 +235,11 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument CreateSiloProfile()
+		public XmlDocument CreateSiloProfile(XmlNode siloConfig)
 		{
-			string cmd = "<SiloProfileCreateRequest session-id=\"" + _session.SessionID + "\" />";
+			string cmd = "<SiloProfileCreateRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + siloConfig.OuterXml + "</SiloProfileCreateRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
@@ -280,9 +285,11 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument CreateSilo()
+		public XmlDocument CreateSilo(XmlNode siloConfig)
 		{
-			string cmd = "<SiloCreateRequest session-id=\"" + _session.SessionID + "\" />";
+			string cmd = "<SiloCreateRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + siloConfig.OuterXml + "</SiloCreateRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
