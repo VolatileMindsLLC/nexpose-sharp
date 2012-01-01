@@ -109,7 +109,8 @@ namespace nexposesharp
 		
 		public void Dispose()
 		{
-			this.Logout();
+			if (this.IsAuthenticated)
+				this.Logout();
 		}
 	}
 }
