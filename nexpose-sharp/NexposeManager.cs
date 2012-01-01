@@ -418,9 +418,14 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument SendLog()
+		public XmlDocument SendLog(XmlNode transport)
 		{
-			XmlDocument doc = new XmlDocument();
+			string cmd = "<SendLogRequest session-id=\"" + _session.SessionID + "\" >";
+			
+			cmd = cmd + transport.OuterXml;
+			cmd = cmd + "</SendLogRequest>";
+			
+			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
 			return doc;
 		}
