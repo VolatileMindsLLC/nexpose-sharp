@@ -3,11 +3,11 @@ using System.Xml;
 
 namespace nexposesharp
 {
-	public class NexposeManager : IDisposable
+	public class NexposeManager11 : IDisposable
 	{
 		private NexposeSession _session;
 		
-		public NexposeManager (NexposeSession session)
+		public NexposeManager11 (NexposeSession session)
 		{
 			if (!session.IsAuthenticated)
 				throw new Exception("Trying to create manager from unauthenticated session. Please authenticate.");

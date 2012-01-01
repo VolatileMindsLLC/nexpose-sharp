@@ -10,11 +10,6 @@ namespace nexposesharp
 		{
 			_session = session;
 		}
-		
-		public void Dispose()
-		{
-			_session.Logout();
-		}
 	}
 }
 

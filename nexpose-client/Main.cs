@@ -12,7 +12,7 @@ namespace nexposeclient
 			{
 				session.Authenticate("nexpose"/*user*/, "nexpose"/*password*/);
 				
-				using (NexposeManager manager = new NexposeManager(session))
+				using (NexposeManager11 manager = new NexposeManager11(session))
 				{
 					XmlDocument vulns = manager.GetVulnerabilityListing();
 					

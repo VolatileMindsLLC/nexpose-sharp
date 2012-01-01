@@ -6,6 +6,12 @@ using System.IO;
 
 namespace nexposesharp
 {
+	public enum NexposeAPIVersion
+	{
+		v11 = 1,
+		v12 = 2,
+	}
+	
 	public class NexposeSession : IDisposable
 	{
 		public NexposeSession (string host)
@@ -13,7 +19,10 @@ namespace nexposesharp
 			this.NexposeHost = host;
 			
 			this.NexposePort = 3780; //default port
+			
+			this.APIVersion = NexposeAPIVersion.v11; //default
 		}
+		
 		
 		public string NexposeHost { get; set; }
 		
@@ -22,6 +31,8 @@ namespace nexposesharp
 		public bool IsAuthenticated { get; set; }
 		
 		public string SessionID { get; set; }
+		
+		public NexposeAPIVersion APIVersion { get; set; }
 		
 		public XmlDocument Authenticate(string username, string password)
 		{
@@ -76,8 +87,21 @@ namespace nexposesharp
 		/// </param>
 		public XmlDocument ExecuteCommand(string commandXml)
 		{
-		            
-			HttpWebRequest request = WebRequest.Create("https://" + this.NexposeHost + ":" + this.NexposePort.ToString() + "/api/1.1/xml") as HttpWebRequest;
+			string uri = string.Empty;
+			
+		    switch (this.APIVersion)
+			{
+				case NexposeAPIVersion.v11:
+					uri = "/api/1.1/xml";
+					break;
+				case NexposeAPIVersion.v12:
+					uri = "/api/1.2/xml";
+					break;
+				default:
+					break;
+			}
+			
+			HttpWebRequest request = WebRequest.Create("https://" + this.NexposeHost + ":" + this.NexposePort.ToString() + uri) as HttpWebRequest;
 			
 			ServicePointManager.ServerCertificateValidationCallback = (s, cert, chain, ssl) => true; //anonymous delegates ftw!
 			
