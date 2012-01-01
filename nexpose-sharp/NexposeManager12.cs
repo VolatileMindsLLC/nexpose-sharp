@@ -354,7 +354,7 @@ namespace nexposesharp
 		{
 			string cmd = "<RoleDetailsRequest session-id=\"" + _session.SessionID + "\" >";
 			
-			cmd = cmd + "<Role name=\"" + name + "\" />";
+			cmd = cmd + "<Role name=\"" + roleName + "\" />";
 			cmd = cmd + "</RoleDetailsRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
