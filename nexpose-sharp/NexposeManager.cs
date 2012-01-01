@@ -326,7 +326,7 @@ namespace nexposesharp
 			
 			cmd = cmd + adHocReportConfig.OuterXml;
 			
-			cmd = cmd = "</ReportAdHocHenerateRequest>";
+			cmd = cmd + "</ReportAdHocHenerateRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
@@ -344,7 +344,7 @@ namespace nexposesharp
 		
 		public XmlDocument GetUserAuthenticatorListing()
 		{
-			string cmd = "UserAuthenticatorListingRequest session-id=\"" + _session.SessionID + "\" />";
+			string cmd = "<UserAuthenticatorListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
