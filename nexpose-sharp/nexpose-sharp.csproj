@@ -36,7 +36,8 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="NexposeSession.cs" />
-    <Compile Include="NexposeManager.cs" />
+    <Compile Include="NexposeManager11.cs" />
+    <Compile Include="NexposeManager12.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

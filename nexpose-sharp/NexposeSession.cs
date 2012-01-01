@@ -74,9 +74,6 @@ namespace nexposesharp
 		/// <param name='commandXml'>
 		/// Command xml.
 		/// </param>
-		/// <param name='uri'>
-		/// URI. Must be absolute.
-		/// </param>
 		public XmlDocument ExecuteCommand(string commandXml)
 		{
 		            
