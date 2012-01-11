@@ -146,7 +146,7 @@ namespace nexposesharp
 		
 		public XmlDocument GetScanEngineListing()
 		{
-			string cmd = "<EngineListRequest session-id=\"" + _session.SessionID + "\" />";
+			string cmd = "<EngineListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
