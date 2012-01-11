@@ -217,7 +217,7 @@ namespace nexposesharp
 		
 		public XmlDocument GetVulnerabilityListing()
 		{
-			string cmd = "<VulnerabilityListRequest session-id=\"" + _session.SessionID + "\" />";
+			string cmd = "<VulnerabilityListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			

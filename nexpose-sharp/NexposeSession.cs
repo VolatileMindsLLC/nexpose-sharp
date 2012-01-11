@@ -40,10 +40,10 @@ namespace nexposesharp
 			
 			XmlDocument doc = this.ExecuteCommand(cmd);
 			
-			if (doc.Attributes["success"].Value == "0")
+			if (doc.FirstChild.Attributes["success"].Value == "0")
 				throw new Exception("Login failed. Check username/password.");
 			
-			this.SessionID = doc.Attributes["session-id"].Value;
+			this.SessionID = doc.FirstChild.Attributes["session-id"].Value;
 			this.IsAuthenticated = true;
 			
 			return doc;
@@ -55,10 +55,10 @@ namespace nexposesharp
 			
 			XmlDocument doc = this.ExecuteCommand(cmd);
 			
-			if (doc.Attributes["success"].Value == "0")
+			if (doc.FirstChild.Attributes["success"].Value == "0")
 				throw new Exception("Login failed. Check username/password.");
 			
-			this.SessionID = doc.Attributes["session-id"].Value;
+			this.SessionID = doc.FirstChild.Attributes["session-id"].Value;
 			this.IsAuthenticated = true;
 			
 			return doc;
@@ -103,7 +103,7 @@ namespace nexposesharp
 			
 			HttpWebRequest request = WebRequest.Create("https://" + this.NexposeHost + ":" + this.NexposePort.ToString() + uri) as HttpWebRequest;
 			
-			ServicePointManager.ServerCertificateValidationCallback = (s, cert, chain, ssl) => true; //anonymous delegates ftw!
+			ServicePointManager.ServerCertificateValidationCallback = (s, cert, chain, ssl) => true; //anonymous lamda expressions ftw!
 			
 			request.KeepAlive = true;
 			request.ProtocolVersion = HttpVersion.Version10;
@@ -122,6 +122,9 @@ namespace nexposesharp
             using (HttpWebResponse r = request.GetResponse() as HttpWebResponse)
                 using (Stream responseStream = r.GetResponseStream())
 					response.Load(responseStream);
+			
+			if (response.FirstChild.FirstChild != null && response.FirstChild.FirstChild.Name == "Failure")	
+				throw new Exception(response.FirstChild.FirstChild.FirstChild.InnerText);
 			
 			return response;	
 			
