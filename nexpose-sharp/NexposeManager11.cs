@@ -322,11 +322,11 @@ namespace nexposesharp
 		
 		public XmlDocument GenerateAdHocReport(XmlNode adHocReportConfig)
 		{
-			string cmd = "<ReportAdHocGenerateRequest session-id=\"" + _session.SessionID + "\" >";
+			string cmd = "<ReportAdhocGenerateRequest session-id=\"" + _session.SessionID + "\" >";
 			
 			cmd = cmd + adHocReportConfig.OuterXml;
 			
-			cmd = cmd + "</ReportAdHocHenerateRequest>";
+			cmd = cmd + "</ReportAdhocGenerateRequest>";
 			
 			XmlDocument doc = _session.ExecuteCommand(cmd);
 			
