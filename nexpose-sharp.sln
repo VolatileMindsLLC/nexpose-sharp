@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nexpose-sharp", "nexpose-sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nexpose-client", "nexpose-client\nexpose-client.csproj", "{D1787C7B-59EB-4E5C-BC1F-9194E808E6F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{80C54227-5C65-4B81-A069-721938F0E06B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexposeReportingExample", "NexposeReportingExample\NexposeReportingExample.csproj", "{5CDA8B1E-FF40-4FF2-B701-1E35AFA6A42D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,12 +19,20 @@ Global
 		{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CDA8B1E-FF40-4FF2-B701-1E35AFA6A42D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CDA8B1E-FF40-4FF2-B701-1E35AFA6A42D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CDA8B1E-FF40-4FF2-B701-1E35AFA6A42D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CDA8B1E-FF40-4FF2-B701-1E35AFA6A42D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80C54227-5C65-4B81-A069-721938F0E06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80C54227-5C65-4B81-A069-721938F0E06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80C54227-5C65-4B81-A069-721938F0E06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80C54227-5C65-4B81-A069-721938F0E06B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1787C7B-59EB-4E5C-BC1F-9194E808E6F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D1787C7B-59EB-4E5C-BC1F-9194E808E6F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1787C7B-59EB-4E5C-BC1F-9194E808E6F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1787C7B-59EB-4E5C-BC1F-9194E808E6F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = nexpose-client\nexpose-client.csproj
+		StartupItem = NexposeReportingExample\NexposeReportingExample.csproj
 	EndGlobalSection
 EndGlobal

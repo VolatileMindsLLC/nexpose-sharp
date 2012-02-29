@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}</ProjectGuid>
+    <ProjectGuid>{80C54227-5C65-4B81-A069-721938F0E06B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>nexposesharp</RootNamespace>
-    <AssemblyName>nexpose-sharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>UnitTests</RootNamespace>
+    <AssemblyName>UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,16 +31,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="NexposeSession.cs" />
-    <Compile Include="NexposeManager11.cs" />
-    <Compile Include="NexposeManager12.cs" />
-    <Compile Include="NexposeUtil.cs" />
-    <Compile Include="NexposeReportFormat.cs" />
-    <Compile Include="NexposeReportFilterType.cs" />
+    <Compile Include="UnitTests11.cs" />
+    <Compile Include="UnitTests22.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <EmbeddedResource Include="AdHocReportConfigTemplate.xml" />
+    <EmbeddedResource Include="AssetGroupTemplate.xml" />
+    <EmbeddedResource Include="CommandTemplate.xml" />
+    <EmbeddedResource Include="ReportTemplate.xml" />
+    <EmbeddedResource Include="ReportTemplateTemplate.xml" />
+    <EmbeddedResource Include="TransportTemplate.xml" />
+    <EmbeddedResource Include="UserTemplate.xml" />
+  </ItemGroup>
 </Project>

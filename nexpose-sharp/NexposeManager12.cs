@@ -19,7 +19,10 @@ namespace nexposesharp
 		{
 			string cmd = "<EngineConfigRequest session-id=\"" + _session.SessionID + "\" engine-id=\"" + engineID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -28,7 +31,10 @@ namespace nexposesharp
 		{
 			string cmd = "<EngineDeleteRequest session-id=\"" + _session.SessionID + "\" engine-id=\"" + engineID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -41,7 +47,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "</EngineSaveRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -53,7 +62,10 @@ namespace nexposesharp
 			cmd = cmd + ticket.OuterXml;
 			cmd = cmd + "</TicketCreateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -62,7 +74,10 @@ namespace nexposesharp
 		{
 			string cmd = "<TicketListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -73,7 +88,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "<Ticket id=\"" + ticketID + "\" /></TicketDetailsRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -83,7 +101,10 @@ namespace nexposesharp
 			string cmd = "<TicketDeleteRequest session-id=\"" + _session.SessionID + "\" >";
 			cmd = cmd + "<Ticket id=\"" + ticketID + "\" /></TicketDeleteRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -92,7 +113,10 @@ namespace nexposesharp
 		{
 			string cmd = "<PendingVulnExceptionCountRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -101,7 +125,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -110,7 +137,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionCreateRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -121,7 +151,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "<comment>" + comment + "</comment></VulnerabilityExceptionReSubmitRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -130,7 +163,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionRecallRequest session-id=\"" + _session.SessionID + "\" exception-id=\"" + vulnExceptionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -139,7 +175,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionApproveRequest session-id=\"" + _session.SessionID + "\" exception-id=\"" + vulnExceptionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -148,7 +187,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionRejectRequest session-id=\"" + _session.SessionID + "\"  exception-id=\"" + vulnExceptionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -157,7 +199,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionDeleteRequest session-id=\"" + _session.SessionID + "\"  exception-id=\"" + vulnExceptionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -170,7 +215,10 @@ namespace nexposesharp
 			cmd = cmd + "<submitter-comment>" + submitterComment + "</submitter-comment>";
 			cmd = cmd + "</VulnerabilityExceptionUpdateCommentRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -179,7 +227,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionUpdateExpiryDateRequest session-id=\"" + _session.SessionID + "\" exception-id=\"" + vulnExceptionID + "\" expiration-date=\"" + date + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -191,7 +242,10 @@ namespace nexposesharp
 			cmd = cmd + userConfig.OuterXml;
 			cmd = cmd + "<CreateMultiTenantUserRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -200,7 +254,10 @@ namespace nexposesharp
 		{
 			string cmd = "<MultiTenantUserListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -212,7 +269,10 @@ namespace nexposesharp
 			cmd = cmd + user.OuterXml;
 			cmd = cmd + "</MultiTenantUserUpdateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -221,7 +281,10 @@ namespace nexposesharp
 		{
 			string cmd = "<MultiTenantUserConfigRequest session-id=\"" + _session.SessionID + "\" user-id=\"" + userID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -230,7 +293,10 @@ namespace nexposesharp
 		{
 			string cmd = "<MultiTenantUserDeleteRequest session-id=\"" + _session.SessionID + "\" user-id=\"" + userID + "\"  />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -241,7 +307,10 @@ namespace nexposesharp
 			
 			cmd = cmd + siloConfig.OuterXml + "</SiloProfileCreateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -250,7 +319,10 @@ namespace nexposesharp
 		{
 			string cmd ="<SiloProfileListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -262,7 +334,10 @@ namespace nexposesharp
 			cmd = cmd + siloProfile.OuterXml;
 			cmd = cmd + "</SiloProfileUpdateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -271,7 +346,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiloProfileConfigRequest session-id=\"" + _session.SessionID + "\" silo-profile-id=\"" + siloProfileID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -280,7 +358,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiloProfileDeletRequest session-id=\"" + _session.SessionID + "\" silo-profile-id=\"" + siloProfileID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -291,7 +372,10 @@ namespace nexposesharp
 			
 			cmd = cmd + siloConfig.OuterXml + "</SiloCreateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -300,7 +384,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiloListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -309,7 +396,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiloConfigRequest session-id=\"" + _session.SessionID + "\" id=\"" + siloID + "\" name=\"" + siloName + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -322,7 +412,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "</SiloUpdateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -331,7 +424,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiloDeleteRequest session-id=\"" + _session.SessionID + "\" silo-id=\"" + siloID + "\" silo-name=\"" + siloName + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -343,7 +439,10 @@ namespace nexposesharp
 			cmd = cmd + role.OuterXml;
 			cmd = cmd + "</RoleCreateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -352,7 +451,10 @@ namespace nexposesharp
 		{
 			string cmd = "<RoleListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -364,7 +466,10 @@ namespace nexposesharp
 			cmd = cmd + "<Role name=\"" + roleName + "\" />";
 			cmd = cmd + "</RoleDetailsRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -377,7 +482,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "</RoleUpdateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -389,7 +497,10 @@ namespace nexposesharp
 			cmd = cmd + "<Role name=\"" + roleName + "\" />";
 			cmd = cmd + "</RoleDeleteRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -400,7 +511,10 @@ namespace nexposesharp
 			
 			cmd = cmd + pool.OuterXml + "</EnginePoolCreateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -409,7 +523,10 @@ namespace nexposesharp
 		{
 			string cmd = "<EnginePoolListingRequest session-id=\"" + _session.SessionID + "\" >";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -420,7 +537,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "<EnginePool name=\"" + enginePoolName + "\" /></EnginePoolDetailsRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -433,7 +553,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "</EnginePoolUpdateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -444,7 +567,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "<EnginePool name=\"" + enginePoolname + "\" /></EnginePoolDeleteRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}

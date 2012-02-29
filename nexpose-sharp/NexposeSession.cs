@@ -3,6 +3,7 @@ using System.Xml;
 using System.Net;
 using System.Text;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace nexposesharp
 {
@@ -38,7 +39,10 @@ namespace nexposesharp
 		{
 			string cmd = "<LoginRequest user-id=\"" + username + "\" password=\"" + password + "\" />";
 			
-			XmlDocument doc = this.ExecuteCommand(cmd);
+			string response = this.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			if (doc.FirstChild.Attributes["success"].Value == "0")
 				throw new Exception("Login failed. Check username/password.");
@@ -53,7 +57,10 @@ namespace nexposesharp
 		{			
 			string cmd = "<LoginRequest sync-id=\"" + syncID + "\" silo-id=\"" + siloID + "\" user-id=\"" + username + "\" password=\"" + password + "\" />";
 			
-			XmlDocument doc = this.ExecuteCommand(cmd);
+			string response = this.ExecuteCommand(cmd);
+
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			if (doc.FirstChild.Attributes["success"].Value == "0")
 				throw new Exception("Login failed. Check username/password.");
@@ -68,7 +75,10 @@ namespace nexposesharp
 		{
 			string cmd = "<LogoutRequest session-id=\"" + this.SessionID + "\" />";
 			
-			XmlDocument doc = this.ExecuteCommand(cmd);
+			string response = this.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			this.IsAuthenticated = false;
 			this.SessionID = string.Empty;
@@ -85,7 +95,7 @@ namespace nexposesharp
 		/// <param name='commandXml'>
 		/// Command xml.
 		/// </param>
-		public XmlDocument ExecuteCommand(string commandXml)
+		public string ExecuteCommand(string commandXml)
 		{
 			string uri = string.Empty;
 			
@@ -98,7 +108,7 @@ namespace nexposesharp
 					uri = "/api/1.2/xml";
 					break;
 				default:
-					break;
+					throw new Exception("unknown api version.");
 			}
 			
 			HttpWebRequest request = WebRequest.Create("https://" + this.NexposeHost + ":" + this.NexposePort.ToString() + uri) as HttpWebRequest;
@@ -118,19 +128,57 @@ namespace nexposesharp
             	dataStream.Write(byteArray, 0, byteArray.Length);
 			
 			XmlDocument response = new XmlDocument();
-			
+			string xml = string.Empty;
             using (HttpWebResponse r = request.GetResponse() as HttpWebResponse)
-                using (Stream responseStream = r.GetResponseStream())
-					response.Load(responseStream);
+                using (StreamReader reader =new StreamReader(r.GetResponseStream()))
+					xml = reader.ReadToEnd();
 			
-			if (response.FirstChild.FirstChild != null && response.FirstChild.FirstChild.Name == "Failure")	
-				throw new Exception(response.FirstChild.FirstChild.FirstChild.InnerText);
+			//xml = xml.Replace(" & ", "&amp;");
 			
-			return response;	
+			if (xml.StartsWith("--AxB9sl3299asdjvbA"))
+			{
+				string[] tmp = Regex.Split(xml, "--AxB9sl3299asdjvbA");
+				
+				tmp = Regex.Split(tmp[2], "base64");
+				
+				string report = tmp[1].Replace("\r\n", string.Empty);
 			
+				
+				report = Base64Decode(report);
+				
+				return report;
+			}
+			else
+			{
+				response.LoadXml(xml);
 			
+				if (response.FirstChild.FirstChild != null && response.FirstChild.FirstChild.Name == "Failure")	
+					throw new Exception(response.FirstChild.FirstChild.FirstChild.InnerText);
+			}
+			
+			return response.OuterXml; //silly, I know, but remediates not knowing if what is returned is really xml or not...
 		}
 		
+		public string Base64Decode(string data)
+		{
+		    try
+		    {
+		        System.Text.ASCIIEncoding encoder = new System.Text.ASCIIEncoding();  
+		        System.Text.Decoder utf8Decode = encoder.GetDecoder();
+		    
+		        byte[] todecode_byte = Convert.FromBase64String(data);
+		        int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);    
+		        char[] decoded_char = new char[charCount];
+		        utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);                   
+		        string result = new String(decoded_char);
+		        return result;
+		    }
+		    catch(Exception e)
+		    {
+		        throw new Exception("Error in base64Decode" + e.Message);
+		    }
+		}
+	
 		public void Dispose()
 		{
 			if (this.IsAuthenticated)

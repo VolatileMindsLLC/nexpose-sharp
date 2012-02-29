@@ -25,7 +25,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiteListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -34,7 +37,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiteConfigRequest session-id=\"" + _session.SessionID + "\" site-id=\"" + siteID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -47,7 +53,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "</SiteSaveRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -56,7 +65,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiteDeleteRequest session-id=\"" + _session.SessionID + "\" site-id=\"" + siteID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -65,7 +77,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiteScanRequest session-id=\"" + _session.SessionID + "\" site-id=\"" + siteID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -74,7 +89,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SiteScanHistoryRequest session-id=\"" + _session.SessionID + "\" site-id=\"" + siteID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -83,23 +101,32 @@ namespace nexposesharp
 		{
 			string cmd = "<SiteDeviceListingRequest session-id=\"" + _session.SessionID + "\" site-id=\"" + siteID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
 		
-		public XmlDocument ScanSiteDevices(XmlNode devices)
-		{
-			XmlDocument doc = new XmlDocument();
-			
-			return doc;
-		}
+//		public XmlDocument ScanSiteDevices(XmlNode devices)
+//		{
+////			string response = new XmlDocument();
+////			
+////			XmlDocument doc = new XmlDocument();
+////			doc.LoadXml(response);
+////			
+////			return doc;
+//		}
 		
 		public XmlDocument DeleteDevice(string deviceID)
 		{
 			string cmd = "<DeviceDeleteRequest session-id=\"" + _session.SessionID + "\" device-id=\"" + deviceID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -108,7 +135,10 @@ namespace nexposesharp
 		{
 			string cmd = "<AssetGroupListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -117,7 +147,10 @@ namespace nexposesharp
 		{
 			string cmd = "<AssetGroupConfigRequest session-id=\"" + _session.SessionID + "\" group-id=\"" + assetGroupID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -130,7 +163,10 @@ namespace nexposesharp
 			
 			cmd = cmd + "</AssetGroupSaveRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -139,7 +175,10 @@ namespace nexposesharp
 		{
 			string cmd = "<AssetGroupDeleteRequest session-id=\"" + _session.SessionID + "\" group-id=\"" + groupID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -148,7 +187,10 @@ namespace nexposesharp
 		{
 			string cmd = "<EngineListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -157,7 +199,10 @@ namespace nexposesharp
 		{
 			string cmd = "<EngineActivityRequest session-id=\"" + _session.SessionID + "\" engine-id=\"" + engineID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -167,7 +212,10 @@ namespace nexposesharp
 			
 			string cmd = "<ScanActivityRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -176,7 +224,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ScanPauseRequest session-id=\"" + _session.SessionID + "\" scan-id=\"" + scanID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -185,7 +236,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ScanResumeRequest session-id=\"" + _session.SessionID + "\" scan-id=\"" + scanID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -194,7 +248,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ScanStopRequest session-id=\"" + _session.SessionID + "\" scan-id=\"" + scanID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -203,7 +260,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ScanStatusRequest session-id=\"" + _session.SessionID + "\" scan-id=\"" + scanID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -211,7 +271,10 @@ namespace nexposesharp
 		public XmlDocument GetScanStatistics(string scanID)
 		{
 			string cmd = "<ScanStatisticsRequest session-id=\"" + _session.SessionID + "\" scan-id=\"" + scanID + "\" />";
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
+			
 			return doc;
 		}
 		
@@ -219,7 +282,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -228,7 +294,10 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityDetailsRequest session-id=\"" + _session.SessionID + "\" vuln-id=\"" + vulnerabilityID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -237,7 +306,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ReportListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -246,7 +318,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ReportTemplateConfigRequest session-id=\"" + _session.SessionID + "\" template-id=\"" + reportTemplateID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -258,7 +333,10 @@ namespace nexposesharp
 			cmd = cmd + reportTemplate.OuterXml;
 			cmd = cmd + "</ReportTemplateSaveRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -267,7 +345,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ReportListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -276,7 +357,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ReportHistoryRequest session-id=\"" + _session.SessionID + "\" report-id=\"" + reportConfigID +  "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -285,7 +369,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ReportConfigRequest session-id=\"" + _session.SessionID + "\" reportcfg-id=\"" + reportConfigID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -297,7 +384,10 @@ namespace nexposesharp
 			cmd = cmd + report.OuterXml;
 			cmd = cmd + "</ReportSaveRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -306,7 +396,10 @@ namespace nexposesharp
 		{
 			string cmd = "<ReportGenerateRequest session-id=\"" + _session.SessionID + "\" report-id=\"" + reportID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -315,12 +408,15 @@ namespace nexposesharp
 		{
 			string cmd = "<DeleteReportRequest session-id=\"" + _session.SessionID + "\" report-id=\"" + reportID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
 		
-		public XmlDocument GenerateAdHocReport(XmlNode adHocReportConfig)
+		public string GenerateAdHocReport(XmlNode adHocReportConfig)
 		{
 			string cmd = "<ReportAdhocGenerateRequest session-id=\"" + _session.SessionID + "\" >";
 			
@@ -328,16 +424,19 @@ namespace nexposesharp
 			
 			cmd = cmd + "</ReportAdhocGenerateRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
 			
-			return doc;
+			return response;
 		}
 		
 		public XmlDocument GetUserListing()
 		{
 			string cmd = "<UserListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -346,7 +445,10 @@ namespace nexposesharp
 		{
 			string cmd = "<UserAuthenticatorListingRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -355,7 +457,10 @@ namespace nexposesharp
 		{
 			string cmd = "<UserConfigRequest session-id=\"" + _session.SessionID + "\" id=\"" + userID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -366,7 +471,10 @@ namespace nexposesharp
 			cmd = cmd + user.OuterXml;
 			cmd = cmd + "</UserSaveRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -375,7 +483,10 @@ namespace nexposesharp
 		{
 			string cmd = "<UserDeleteRequest session-id=\"" + _session.SessionID + "\" id=\"" + userID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -386,7 +497,10 @@ namespace nexposesharp
 			cmd = cmd + command.OuterXml;
 			cmd = "</ConsoleCommandRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -395,7 +509,10 @@ namespace nexposesharp
 		{
 			string cmd = "<SystemInformationRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -404,7 +521,10 @@ namespace nexposesharp
 		{
 			string cmd = "<StartUpdateRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -413,7 +533,10 @@ namespace nexposesharp
 		{
 			string cmd = "<RestartRequest session-id=\"" + _session.SessionID + "\" />";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
@@ -425,7 +548,10 @@ namespace nexposesharp
 			cmd = cmd + transport.OuterXml;
 			cmd = cmd + "</SendLogRequest>";
 			
-			XmlDocument doc = _session.ExecuteCommand(cmd);
+			string response = _session.ExecuteCommand(cmd);
+			
+			XmlDocument doc = new XmlDocument();
+			doc.LoadXml(response);
 			
 			return doc;
 		}
