@@ -39,7 +39,7 @@ namespace NexposeReportingExample
 					//add a filter for a specific "site" with and id of "id"
 					filters.Add(NexposeReportFilterType.Site, id);
 					
-					string report = manager.GenerateAdHocReport(NexposeUtil.GenerateAdHocReportConfig(templateID, NexposeReportFormat.CSV, filters));
+					string report = manager.GenerateAdHocReport(NexposeUtil.GenerateAdHocReportConfig(templateID, NexposeReportFormat.RawXML, filters));
 					Console.WriteLine(report);
 				}
 			}
