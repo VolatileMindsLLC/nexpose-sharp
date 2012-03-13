@@ -9,7 +9,7 @@ namespace NexposeReportingExample
 	{
 		public static void Main (string[] args)
 		{
-			using (NexposeSession session = new NexposeSession("192.168.1.143"))
+			using (NexposeSession session = new NexposeSession("192.168.1.141"))
 			{
 				session.Authenticate("nexpose"/*user*/, "nexpose"/*password*/);
 				
@@ -39,7 +39,7 @@ namespace NexposeReportingExample
 					//add a filter for a specific "site" with and id of "id"
 					filters.Add(NexposeReportFilterType.Site, id);
 					
-					string report = manager.GenerateAdHocReport(NexposeUtil.GenerateAdHocReportConfig(templateID, NexposeReportFormat.XML, filters));
+					string report = manager.GenerateAdHocReport(NexposeUtil.GenerateAdHocReportConfig(templateID, NexposeReportFormat.CSV, filters));
 					Console.WriteLine(report);
 				}
 			}

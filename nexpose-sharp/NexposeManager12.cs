@@ -211,8 +211,8 @@ namespace nexposesharp
 		{
 			string cmd = "<VulnerabilityExceptionUpdateCommentRequest session-id=\"" + _session.SessionID + "\" exception-id=\"" + vulnExceptionID + "\" >";
 			
-			cmd = cmd + "<reviewer-comment>" + reviewerComment + "</reviewer-comment>";
-			cmd = cmd + "<submitter-comment>" + submitterComment + "</submitter-comment>";
+			cmd = cmd + "<reviewer-comment>" + CleanString(reviewerComment) + "</reviewer-comment>";
+			cmd = cmd + "<submitter-comment>" + CleanString(submitterComment) + "</submitter-comment>";
 			cmd = cmd + "</VulnerabilityExceptionUpdateCommentRequest>";
 			
 			string response = _session.ExecuteCommand(cmd);
@@ -394,7 +394,7 @@ namespace nexposesharp
 		
 		public XmlDocument GetSiloConfig(string siloID, string siloName)
 		{
-			string cmd = "<SiloConfigRequest session-id=\"" + _session.SessionID + "\" id=\"" + siloID + "\" name=\"" + siloName + "\" />";
+			string cmd = "<SiloConfigRequest session-id=\"" + _session.SessionID + "\" id=\"" + siloID + "\" name=\"" + CleanString(siloName) + "\" />";
 			
 			string response = _session.ExecuteCommand(cmd);
 			
@@ -422,7 +422,7 @@ namespace nexposesharp
 		
 		public XmlDocument DeleteSilo(string siloID, string siloName)
 		{
-			string cmd = "<SiloDeleteRequest session-id=\"" + _session.SessionID + "\" silo-id=\"" + siloID + "\" silo-name=\"" + siloName + "\" />";
+			string cmd = "<SiloDeleteRequest session-id=\"" + _session.SessionID + "\" silo-id=\"" + siloID + "\" silo-name=\"" + CleanString(siloName) + "\" />";
 			
 			string response = _session.ExecuteCommand(cmd);
 			
@@ -535,7 +535,7 @@ namespace nexposesharp
 		{
 			string cmd = "<EnginePoolDetailsRequest session-id=\"" + _session.SessionID + "\" >";
 			
-			cmd = cmd + "<EnginePool name=\"" + enginePoolName + "\" /></EnginePoolDetailsRequest>";
+			cmd = cmd + "<EnginePool name=\"" + CleanString(enginePoolName) + "\" /></EnginePoolDetailsRequest>";
 			
 			string response = _session.ExecuteCommand(cmd);
 			
@@ -565,7 +565,7 @@ namespace nexposesharp
 		{
 			string cmd = "<EnginePoolDeleteRequest session-id=\"" + _session.SessionID + "\" >";
 			
-			cmd = cmd + "<EnginePool name=\"" + enginePoolname + "\" /></EnginePoolDeleteRequest>";
+			cmd = cmd + "<EnginePool name=\"" + CleanString(enginePoolname) + "\" /></EnginePoolDeleteRequest>";
 			
 			string response = _session.ExecuteCommand(cmd);
 			
@@ -573,6 +573,14 @@ namespace nexposesharp
 			doc.LoadXml(response);
 			
 			return doc;
+		}
+		
+		
+		private string CleanString(string text)
+		{
+			return text.Replace(" & ", " &amp; ")
+				.Replace("<", "&lt;")
+				.Replace(">", "&gt;");
 		}
 		
 	}

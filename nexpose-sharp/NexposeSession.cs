@@ -143,7 +143,6 @@ namespace nexposesharp
 				
 				string report = tmp[1].Replace("\r\n", string.Empty);
 			
-				
 				report = Base64Decode(report);
 				
 				return report;

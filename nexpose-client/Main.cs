@@ -8,7 +8,7 @@ namespace nexposeclient
 	{
 		public static void Main (string[] args)
 		{
-			using (NexposeSession session = new NexposeSession("192.168.1.143"))
+			using (NexposeSession session = new NexposeSession("192.168.1.141"))
 			{
 				session.Authenticate("nexpose"/*user*/, "nexpose"/*password*/);
 				
