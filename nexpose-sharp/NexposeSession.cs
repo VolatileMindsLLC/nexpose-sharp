@@ -174,7 +174,7 @@ namespace nexposesharp
 		    }
 		    catch(Exception e)
 		    {
-		        throw new Exception("Error in base64Decode" + e.Message);
+		        throw new Exception("Error in base64Decode: " + e.Message);
 		    }
 		}
 	

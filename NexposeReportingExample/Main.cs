@@ -9,7 +9,7 @@ namespace NexposeReportingExample
 	{
 		public static void Main (string[] args)
 		{
-			using (NexposeSession session = new NexposeSession("192.168.1.141"))
+			using (NexposeSession session = new NexposeSession("192.168.1.148"))
 			{
 				session.Authenticate("nexpose"/*user*/, "nexpose"/*password*/);
 				
@@ -22,7 +22,7 @@ namespace NexposeReportingExample
 					foreach (XmlNode site in sites.FirstChild.ChildNodes)
 						Console.WriteLine(String.Format("{0}. {1}", site.Attributes["id"].Value, site.Attributes["name"].Value));
 					
-					string id = Console.ReadLine();
+					string id = "-1";
 					
 					XmlDocument templates = manager.GetReportTemplateListing();
 					
