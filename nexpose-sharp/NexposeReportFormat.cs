@@ -12,7 +12,7 @@ namespace nexposesharp
 		CSV = 6,
 		RawXML = 7,
 		QualysXML = 8,
-		
+		RawXMLv2 = 9
 	}
 }
 

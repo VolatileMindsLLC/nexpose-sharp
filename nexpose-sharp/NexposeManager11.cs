@@ -392,7 +392,7 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public XmlDocument GenerateReport(string reportID)
+		public byte[] GenerateReport(string reportID)
 		{
 			string cmd = "<ReportGenerateRequest session-id=\"" + _session.SessionID + "\" report-id=\"" + reportID + "\" />";
 			
@@ -401,7 +401,7 @@ namespace nexposesharp
 			XmlDocument doc = new XmlDocument();
 			doc.LoadXml(response);
 			
-			return doc;
+			return new byte[0];
 		}
 		
 		public XmlDocument DeleteReport(string reportID)
@@ -416,7 +416,7 @@ namespace nexposesharp
 			return doc;
 		}
 		
-		public string GenerateAdHocReport(XmlNode adHocReportConfig)
+		public byte[] GenerateAdHocReport(XmlNode adHocReportConfig)
 		{
 			string cmd = "<ReportAdhocGenerateRequest session-id=\"" + _session.SessionID + "\" >";
 			
@@ -426,7 +426,9 @@ namespace nexposesharp
 			
 			string response = _session.ExecuteCommand(cmd);
 			
-			return response;
+    		byte[] bytes = System.Text.Encoding.UTF8.GetBytes(response);
+			
+			return bytes;
 		}
 		
 		public XmlDocument GetUserListing()

@@ -130,18 +130,24 @@ namespace nexposesharp
 			XmlDocument response = new XmlDocument();
 			string xml = string.Empty;
             using (HttpWebResponse r = request.GetResponse() as HttpWebResponse)
-                using (StreamReader reader =new StreamReader(r.GetResponseStream()))
+                using (StreamReader reader = new StreamReader(r.GetResponseStream()))
 					xml = reader.ReadToEnd();
 			
-			//xml = xml.Replace(" & ", "&amp;");
+			string boundary = "--AxB9sl3299asdjvbA";
 			
-			if (xml.StartsWith("--AxB9sl3299asdjvbA"))
+			if (xml.StartsWith(boundary))
 			{
-				string[] tmp = Regex.Split(xml, "--AxB9sl3299asdjvbA");
+				string[] tmp = Regex.Split(xml, boundary);
 				
 				tmp = Regex.Split(tmp[2], "base64");
 				
 				string report = tmp[1].Replace("\r\n", string.Empty);
+				
+				//The following lines are a shim to get around an issue with the base64 encoded report nexpose returns.
+				string t = report.Remove(0, report.Length - 4);
+				
+				if (t == "DQo=")
+					report = report.Remove(report.Length - 4);
 			
 				report = Base64Decode(report);
 				

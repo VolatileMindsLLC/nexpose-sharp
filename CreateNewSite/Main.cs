@@ -8,7 +8,7 @@ namespace CreateNewSite
 	{
 		public static void Main (string[] args)
 		{
-			string id = "-1'";
+			string id = "-1";
 			string template = "full-audit";
 			string name = "blah" + Guid.NewGuid().ToString();
 			string description = "fdsa";
@@ -30,9 +30,9 @@ namespace CreateNewSite
 			XmlDocument doc = new XmlDocument();
 			doc.LoadXml(siteXml);
 			
-			using (NexposeSession session = new NexposeSession("192.168.1.148"))
+			using (NexposeSession session = new NexposeSession("toreng-0740.tor.rapid7.com"))
 			{
-				session.Authenticate("nexpose", "nexpose");
+				session.Authenticate("v4test", "buynexpose");
 				
 				using (NexposeManager11 manager = new NexposeManager11(session))
 				{

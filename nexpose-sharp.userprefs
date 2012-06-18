@@ -3,17 +3,20 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="nexpose-sharp/NexposeManager11.cs">
     <Files>
       <File FileName="nexpose-sharp/NexposeSession.cs" Line="161" Column="1" />
-      <File FileName="nexpose-sharp/NexposeManager11.cs" Line="309" Column="51" />
-      <File FileName="nexpose-client/Main.cs" Line="11" Column="69" />
+      <File FileName="nexpose-sharp/NexposeManager11.cs" Line="429" Column="67" />
+      <File FileName="nexpose-client/Main.cs" Line="1" Column="1" />
       <File FileName="nexpose-sharp/NexposeManager12.cs" Line="1" Column="1" />
-      <File FileName="nexpose-sharp/NexposeUtil.cs" Line="49" Column="5" />
-      <File FileName="NexposeReportingExample/Main.cs" Line="27" Column="65" />
+      <File FileName="nexpose-sharp/NexposeUtil.cs" Line="1" Column="1" />
+      <File FileName="NexposeReportingExample/Main.cs" Line="42" Column="12" />
       <File FileName="nexpose-sharp/NexposeReportFilterType.cs" Line="1" Column="1" />
-      <File FileName="ArbitraryReportLoad/Main.cs" Line="30" Column="43" />
+      <File FileName="ArbitraryReportLoad/Main.cs" Line="1" Column="1" />
+      <File FileName="CreateNewSite/Main.cs" Line="35" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/home/bperry/work/nexpose-sharp/CreateNewSite/Main.cs" line="33" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

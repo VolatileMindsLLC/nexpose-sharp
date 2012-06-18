@@ -9,9 +9,9 @@ namespace NexposeReportingExample
 	{
 		public static void Main (string[] args)
 		{
-			using (NexposeSession session = new NexposeSession("192.168.1.148"))
+			using (NexposeSession session = new NexposeSession("127.0.0.1"))
 			{
-				session.Authenticate("nexpose"/*user*/, "nexpose"/*password*/);
+				session.Authenticate("v4test"/*user*/, "buynexpose"/*password*/);
 				
 				using (NexposeManager11 manager = new NexposeManager11(session))
 				{
@@ -22,7 +22,7 @@ namespace NexposeReportingExample
 					foreach (XmlNode site in sites.FirstChild.ChildNodes)
 						Console.WriteLine(String.Format("{0}. {1}", site.Attributes["id"].Value, site.Attributes["name"].Value));
 					
-					string id = "-1";
+					string id = Console.ReadLine();
 					
 					XmlDocument templates = manager.GetReportTemplateListing();
 					
@@ -39,7 +39,7 @@ namespace NexposeReportingExample
 					//add a filter for a specific "site" with and id of "id"
 					filters.Add(NexposeReportFilterType.Site, id);
 					
-					string report = manager.GenerateAdHocReport(NexposeUtil.GenerateAdHocReportConfig(templateID, NexposeReportFormat.RawXML, filters));
+					byte[] report = manager.GenerateAdHocReport(NexposeUtil.GenerateAdHocReportConfig(templateID, NexposeReportFormat.RawXML, filters));
 					Console.WriteLine(report);
 				}
 			}

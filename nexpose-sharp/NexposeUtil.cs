@@ -34,6 +34,9 @@ namespace nexposesharp
 				case NexposeReportFormat.RawXML:
 					format = "raw-xml";
 					break;
+				case NexposeReportFormat.RawXMLv2:
+					format = "raw-xml-v2";
+					break;
 				case NexposeReportFormat.RTF: 
 					format = "rtf";
 					break;

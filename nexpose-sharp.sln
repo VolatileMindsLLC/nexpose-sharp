@@ -45,6 +45,6 @@ Global
 		{D1787C7B-59EB-4E5C-BC1F-9194E808E6F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = CreateNewSite\CreateNewSite.csproj
+		StartupItem = NexposeReportingExample\NexposeReportingExample.csproj
 	EndGlobalSection
 EndGlobal
