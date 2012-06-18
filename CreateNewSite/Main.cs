@@ -30,9 +30,9 @@ namespace CreateNewSite
 			XmlDocument doc = new XmlDocument();
 			doc.LoadXml(siteXml);
 			
-			using (NexposeSession session = new NexposeSession("toreng-0740.tor.rapid7.com"))
+			using (NexposeSession session = new NexposeSession("127.0.0.1"))
 			{
-				session.Authenticate("v4test", "buynexpose");
+				session.Authenticate("nexpose", "nexpose");
 				
 				using (NexposeManager11 manager = new NexposeManager11(session))
 				{
