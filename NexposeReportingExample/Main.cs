@@ -11,7 +11,7 @@ namespace NexposeReportingExample
 		{
 			using (NexposeSession session = new NexposeSession("127.0.0.1"))
 			{
-				session.Authenticate("v4test"/*user*/, "buynexpose"/*password*/);
+				session.Authenticate("nexpose"/*user*/, "nexpose"/*password*/);
 				
 				using (NexposeManager11 manager = new NexposeManager11(session))
 				{
