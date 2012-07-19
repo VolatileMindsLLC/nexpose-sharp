@@ -1,16 +1,9 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="nexpose-sharp/NexposeManager11.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DecodeMultiPartMIME/Main.cs">
     <Files>
-      <File FileName="nexpose-sharp/NexposeSession.cs" Line="161" Column="1" />
       <File FileName="nexpose-sharp/NexposeManager11.cs" Line="429" Column="67" />
-      <File FileName="nexpose-client/Main.cs" Line="1" Column="1" />
-      <File FileName="nexpose-sharp/NexposeManager12.cs" Line="1" Column="1" />
-      <File FileName="nexpose-sharp/NexposeUtil.cs" Line="1" Column="1" />
-      <File FileName="NexposeReportingExample/Main.cs" Line="42" Column="12" />
-      <File FileName="nexpose-sharp/NexposeReportFilterType.cs" Line="1" Column="1" />
-      <File FileName="ArbitraryReportLoad/Main.cs" Line="1" Column="1" />
-      <File FileName="CreateNewSite/Main.cs" Line="35" Column="47" />
+      <File FileName="DecodeMultiPartMIME/Main.cs" Line="33" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

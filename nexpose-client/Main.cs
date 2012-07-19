@@ -8,9 +8,9 @@ namespace nexposeclient
 	{
 		public static void Main (string[] args)
 		{
-			using (NexposeSession session = new NexposeSession("192.168.1.141"))
+			using (NexposeSession session = new NexposeSession("127.0.0.1"))
 			{
-				session.Authenticate("nexpose"/*user*/, "nexpose"/*password*/);
+				session.Authenticate("v4test"/*user*/, "buynexpose"/*password*/);
 				
 				using (NexposeManager11 manager = new NexposeManager11(session))
 				{
@@ -22,6 +22,8 @@ namespace nexposeclient
 						string vulnID = vuln.Attributes["id"].Value;
 
 						XmlDocument deets = manager.GetVulnerabilityDetails(vulnID);
+						
+						string details = deets.OuterXml;
 						
 						//XPath would be a better way to do this long term, but this serves its purpose
 						string title = deets.FirstChild.FirstChild.Attributes["title"].Value;

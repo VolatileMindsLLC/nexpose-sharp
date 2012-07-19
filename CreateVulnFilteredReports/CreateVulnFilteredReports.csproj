@@ -5,20 +5,20 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>nexposesharp</RootNamespace>
-    <AssemblyName>nexpose-sharp</AssemblyName>
+    <ProjectGuid>{25E07273-7ED7-4329-AC1D-DEE15F29CA6A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CreateVulnFilteredReports</RootNamespace>
+    <AssemblyName>CreateVulnFilteredReports</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
+    <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <Externalconsole>true</Externalconsole>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -26,21 +26,21 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <Externalconsole>true</Externalconsole>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="NexposeSession.cs" />
-    <Compile Include="NexposeManager11.cs" />
-    <Compile Include="NexposeManager12.cs" />
-    <Compile Include="NexposeUtil.cs" />
-    <Compile Include="NexposeReportFormat.cs" />
-    <Compile Include="NexposeReportFilterType.cs" />
-    <Compile Include="ReportConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\nexpose-sharp\nexpose-sharp.csproj">
+      <Project>{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}</Project>
+      <Name>nexpose-sharp</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

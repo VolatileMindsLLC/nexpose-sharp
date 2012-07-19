@@ -13,12 +13,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbitraryReportLoad", "Arbi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateNewSite", "CreateNewSite\CreateNewSite.csproj", "{ABD1AD9C-D3E7-4EB8-A8DA-F3A836A97889}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecodeMultiPartMIME", "DecodeMultiPartMIME\DecodeMultiPartMIME.csproj", "{971366D1-5AF0-4C14-8727-FCE282565624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateVulnFilteredReports", "CreateVulnFilteredReports\CreateVulnFilteredReports.csproj", "{25E07273-7ED7-4329-AC1D-DEE15F29CA6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25E07273-7ED7-4329-AC1D-DEE15F29CA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E07273-7ED7-4329-AC1D-DEE15F29CA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E07273-7ED7-4329-AC1D-DEE15F29CA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E07273-7ED7-4329-AC1D-DEE15F29CA6A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +43,10 @@ Global
 		{80C54227-5C65-4B81-A069-721938F0E06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80C54227-5C65-4B81-A069-721938F0E06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80C54227-5C65-4B81-A069-721938F0E06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{971366D1-5AF0-4C14-8727-FCE282565624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{971366D1-5AF0-4C14-8727-FCE282565624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{971366D1-5AF0-4C14-8727-FCE282565624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{971366D1-5AF0-4C14-8727-FCE282565624}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABD1AD9C-D3E7-4EB8-A8DA-F3A836A97889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABD1AD9C-D3E7-4EB8-A8DA-F3A836A97889}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABD1AD9C-D3E7-4EB8-A8DA-F3A836A97889}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +57,6 @@ Global
 		{D1787C7B-59EB-4E5C-BC1F-9194E808E6F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = NexposeReportingExample\NexposeReportingExample.csproj
+		StartupItem = CreateVulnFilteredReports\CreateVulnFilteredReports.csproj
 	EndGlobalSection
 EndGlobal
