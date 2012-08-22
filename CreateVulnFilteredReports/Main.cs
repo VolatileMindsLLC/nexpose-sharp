@@ -13,7 +13,7 @@ namespace CreateVulnFilteredReports
 			
 			using (NexposeSession session = new NexposeSession("127.0.0.1"))
 			{
-				session.Authenticate("v4test", "buynexpose");
+				session.Authenticate("username", "password");
 				
 				using (NexposeManager12 manager = new NexposeManager12(session))
 				{
