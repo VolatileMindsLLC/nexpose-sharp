@@ -13,14 +13,14 @@ namespace CreateVulnFilteredReports
 			
 			using (NexposeSession session = new NexposeSession("127.0.0.1"))
 			{
-				session.Authenticate("username", "password");
+				session.Authenticate("v4test", "buynexpose");
 				
 				using (NexposeManager12 manager = new NexposeManager12(session))
 				{
 					ReportConfig config = new ReportConfig();
 					
 					config.Name = Guid.NewGuid().ToString();
-					config.Format = NexposeReportFormat.RawXMLv2;
+					config.Format = NexposeReportFormat.DBExport;
 					config.TemplateID = "audit-report";
 					
 					Dictionary<NexposeReportFilterType, string> filters = new Dictionary<NexposeReportFilterType, string>();
@@ -32,7 +32,7 @@ namespace CreateVulnFilteredReports
 					
 					XmlNode configNode = config.GenerateXML();
 					
-					XmlDocument response = manager.SaveOrUpdateReport(configNode, generateNow);
+					manager.SaveOrUpdateReport(configNode, generateNow);
 					
 					filters = new Dictionary<NexposeReportFilterType, string>();
 					filters.Add(NexposeReportFilterType.VulnerabilityCategories, "include:Adobe");
@@ -43,7 +43,7 @@ namespace CreateVulnFilteredReports
 					
 					configNode = config.GenerateXML();
 					
-					response = manager.SaveOrUpdateReport(configNode, generateNow);
+					manager.SaveOrUpdateReport(configNode, generateNow);
 				}
 			}
 		}

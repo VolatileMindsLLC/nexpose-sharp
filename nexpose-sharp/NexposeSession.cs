@@ -39,10 +39,7 @@ namespace nexposesharp
 		{
 			string cmd = "<LoginRequest user-id=\"" + username + "\" password=\"" + password + "\" />";
 			
-			string response = this.ExecuteCommand(cmd);
-			
-			XmlDocument doc = new XmlDocument();
-			doc.LoadXml(response);
+			XmlDocument doc = this.ExecuteCommand(cmd) as XmlDocument;		
 			
 			if (doc.FirstChild.Attributes["success"].Value == "0")
 				throw new Exception("Login failed. Check username/password.");
@@ -57,7 +54,7 @@ namespace nexposesharp
 		{			
 			string cmd = "<LoginRequest sync-id=\"" + syncID + "\" silo-id=\"" + siloID + "\" user-id=\"" + username + "\" password=\"" + password + "\" />";
 			
-			string response = this.ExecuteCommand(cmd);
+			string response = this.ExecuteCommand(cmd) as string;
 
 			XmlDocument doc = new XmlDocument();
 			doc.LoadXml(response);
@@ -75,11 +72,8 @@ namespace nexposesharp
 		{
 			string cmd = "<LogoutRequest session-id=\"" + this.SessionID + "\" />";
 			
-			string response = this.ExecuteCommand(cmd);
-			
-			XmlDocument doc = new XmlDocument();
-			doc.LoadXml(response);
-			
+			XmlDocument doc = this.ExecuteCommand(cmd) as XmlDocument;
+
 			this.IsAuthenticated = false;
 			this.SessionID = string.Empty;
 			 
@@ -95,7 +89,7 @@ namespace nexposesharp
 		/// <param name='commandXml'>
 		/// Command xml.
 		/// </param>
-		public string ExecuteCommand(string commandXml)
+		public object ExecuteCommand(string commandXml)
 		{
 			string uri = string.Empty;
 			
@@ -144,14 +138,13 @@ namespace nexposesharp
 				string report = tmp[1].Replace("\r\n", string.Empty);
 				
 				//The following lines are a shim to get around an issue with the base64 encoded report nexpose returns.
-				string t = report.Remove(0, report.Length - 4);
-				
+				string t = report.Remove(0, report.Length - 4);	
 				if (t == "DQo=")
 					report = report.Remove(report.Length - 4);
 			
-				report = Base64Decode(report);
+				byte[] reportBytes = Convert.FromBase64String(report);
 				
-				return report;
+				return reportBytes as object;
 			}
 			else
 			{
@@ -161,27 +154,7 @@ namespace nexposesharp
 					throw new Exception(response.FirstChild.FirstChild.FirstChild.InnerText);
 			}
 			
-			return response.OuterXml; //silly, I know, but remediates not knowing if what is returned is really xml or not...
-		}
-		
-		public string Base64Decode(string data)
-		{
-		    try
-		    {
-		        System.Text.ASCIIEncoding encoder = new System.Text.ASCIIEncoding();  
-		        System.Text.Decoder utf8Decode = encoder.GetDecoder();
-		    
-		        byte[] todecode_byte = Convert.FromBase64String(data);
-		        int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);    
-		        char[] decoded_char = new char[charCount];
-		        utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);                   
-		        string result = new String(decoded_char);
-		        return result;
-		    }
-		    catch(Exception e)
-		    {
-		        throw new Exception("Error in base64Decode: " + e.Message);
-		    }
+			return response as object; 
 		}
 	
 		public void Dispose()

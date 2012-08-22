@@ -6,6 +6,7 @@ namespace nexposesharp
 {
 	public class ReportConfig
 	{
+		//sane defaults
 		private string _id = "-1";
 		private string _trendDateRange = "years_1";
 		private string _secondAxis = "averageRisk";
@@ -135,6 +136,9 @@ namespace nexposesharp
 					break;
 				case NexposeReportFormat.XML:
 					format = "xml";
+					break;
+				case NexposeReportFormat.DBExport:
+					format = "db";
 					break;
 				default:
 					throw new Exception("unknown report type.");

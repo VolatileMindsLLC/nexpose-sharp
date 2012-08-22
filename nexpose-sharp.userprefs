@@ -1,15 +1,14 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DecodeMultiPartMIME/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="nexpose-sharp/NexposeManager11.cs">
     <Files>
       <File FileName="nexpose-sharp/NexposeManager11.cs" Line="429" Column="67" />
-      <File FileName="DecodeMultiPartMIME/Main.cs" Line="33" Column="1" />
+      <File FileName="DecodeMultiPartMIME/Main.cs" Line="1" Column="1" />
+      <File FileName="CreateVulnFilteredReports/Main.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/home/bperry/work/nexpose-sharp/CreateNewSite/Main.cs" line="33" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
