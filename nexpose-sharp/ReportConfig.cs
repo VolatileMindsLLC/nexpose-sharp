@@ -12,6 +12,7 @@ namespace nexposesharp
 		private string _secondAxis = "averageRisk";
 		private string _siteAxis = "aggregateRisk";
 		private string _groupAxis = "aggregateRisk";
+		private string _compareTo = string.Empty;
 		private bool _useAssetGroupMemberships = false;
 		private bool _allAssetRiskTrend = true;
 		private bool _aggregateAxis = false;
@@ -51,6 +52,11 @@ namespace nexposesharp
 		public string ID { 
 			get { return _id; } 
 			set { _id = value; }
+		}
+
+		public string CompareTo {
+			get { return _compareTo; }
+			set { _compareTo = value; }
 		}
 		
 		public string TrendDateRange { 
@@ -206,6 +212,10 @@ namespace nexposesharp
 			xml += "</RiskTrendConfig>";
 			xml += "<Users>";
 			xml += "</Users>";
+
+			if (this.CompareTo != string.Empty)
+				xml += "<Baseline compareTo=\"" + this.CompareTo + "\" />";
+
 			xml += "<Delivery>";
 			xml += "<Storage storeOnServer=\"" + (this.StoreOnServer ? "1" : "0") + "\"><location></location></Storage>";
 			xml += "</Delivery>";
