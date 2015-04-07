@@ -1,4 +1,4 @@
-﻿<Properties GitUserInfo="UsingGIT">
+﻿<Properties GitUserInfo="UsingGIT" StartupItem="nexpose-sharp/nexpose-sharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="nexpose-sharp/NexposeManager11.cs">
     <Files>

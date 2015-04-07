@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{35EDE3B5-13AE-4E8B-B699-50C48E1CCE17}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -31,16 +31,16 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="NexposeSession.cs" />
-    <Compile Include="NexposeManager11.cs" />
-    <Compile Include="NexposeManager12.cs" />
     <Compile Include="NexposeUtil.cs" />
     <Compile Include="NexposeReportFormat.cs" />
     <Compile Include="NexposeReportFilterType.cs" />
-    <Compile Include="ReportConfig.cs" />
+    <Compile Include="NexposeAPIVersion.cs" />
+    <Compile Include="NexposeManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

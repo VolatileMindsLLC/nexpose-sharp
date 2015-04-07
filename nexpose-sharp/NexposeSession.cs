@@ -4,30 +4,22 @@ using System.Net;
 using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace nexposesharp
 {
-	public enum NexposeAPIVersion
-	{
-		v11 = 1,
-		v12 = 2,
-	}
-	
 	public class NexposeSession : IDisposable
 	{
-		public NexposeSession (string host)
+		public NexposeSession (string host, int port = 3780, NexposeAPIVersion version = NexposeAPIVersion.v11)
 		{
-			this.NexposeHost = host;
-			
-			this.NexposePort = 3780; //default port
-			
-			this.APIVersion = NexposeAPIVersion.v11; //default
+			this.Host = host;
+			this.Port = port;
+			this.APIVersion = version;
 		}
+
+		public string Host { get; set; }
 		
-		
-		public string NexposeHost { get; set; }
-		
-		public int NexposePort { get; set; }
+		public int Port { get; set; }
 		
 		public bool IsAuthenticated { get; set; }
 		
@@ -35,61 +27,33 @@ namespace nexposesharp
 		
 		public NexposeAPIVersion APIVersion { get; set; }
 		
-		public XmlDocument Authenticate(string username, string password)
+		public XDocument Authenticate(string username, string password)
 		{
-			string cmd = "<LoginRequest user-id=\"" + username + "\" password=\"" + password + "\" />";
-			
-			XmlDocument doc = this.ExecuteCommand(cmd) as XmlDocument;		
-			
-			if (doc.FirstChild.Attributes["success"].Value == "0")
-				throw new Exception("Login failed. Check username/password.");
-			
-			this.SessionID = doc.FirstChild.Attributes["session-id"].Value;
-			this.IsAuthenticated = true;
-			
-			return doc;
-		}
-		
-		public XmlDocument Authenticate(string username, string password, string syncID, string siloID)
-		{			
-			string cmd = "<LoginRequest sync-id=\"" + syncID + "\" silo-id=\"" + siloID + "\" user-id=\"" + username + "\" password=\"" + password + "\" />";
-			
-			string response = this.ExecuteCommand(cmd) as string;
+			XDocument cmd = new XDocument("LoginRequest",
+				new XAttribute("user-id", username),
+				new XAttribute("password", password));
 
-			XmlDocument doc = new XmlDocument();
-			doc.LoadXml(response);
-			
-			if (doc.FirstChild.Attributes["success"].Value == "0")
-				throw new Exception("Login failed. Check username/password.");
-			
-			this.SessionID = doc.FirstChild.Attributes["session-id"].Value;
+			XDocument doc = this.ExecuteCommand(cmd);		
+
 			this.IsAuthenticated = true;
 			
 			return doc;
 		}
 		
-		public XmlDocument Logout()
+		public XDocument Logout()
 		{
-			string cmd = "<LogoutRequest session-id=\"" + this.SessionID + "\" />";
-			
-			XmlDocument doc = this.ExecuteCommand(cmd) as XmlDocument;
+			XDocument cmd = new XDocument("LogoutRequest",
+				new XAttribute("session-id", this.SessionID));
+
+			XDocument doc = this.ExecuteCommand(cmd);
 
 			this.IsAuthenticated = false;
 			this.SessionID = string.Empty;
 			 
 			return doc;
 		}
-		
-		/// <summary>
-		/// Executes the command.
-		/// </summary>
-		/// <returns>
-		/// The command results.
-		/// </returns>
-		/// <param name='commandXml'>
-		/// Command xml.
-		/// </param>
-		public object ExecuteCommand(string commandXml)
+
+		public XDocument ExecuteCommand(XDocument commandXml)
 		{
 			string uri = string.Empty;
 			
@@ -105,7 +69,7 @@ namespace nexposesharp
 					throw new Exception("unknown api version.");
 			}
 			
-			HttpWebRequest request = WebRequest.Create("https://" + this.NexposeHost + ":" + this.NexposePort.ToString() + uri) as HttpWebRequest;
+			HttpWebRequest request = WebRequest.Create("https://" + this.Host + ":" + this.Port.ToString() + uri) as HttpWebRequest;
 			
 			ServicePointManager.ServerCertificateValidationCallback = (s, cert, chain, ssl) => true; //anonymous lamda expressions ftw!
 			
@@ -114,47 +78,19 @@ namespace nexposesharp
             request.Method = "POST";
 			request.ContentType = "text/xml";
 			
-            byte[] byteArray = Encoding.ASCII.GetBytes(commandXml);
+			byte[] byteArray = Encoding.ASCII.GetBytes(commandXml.ToString());
             
             request.ContentLength = byteArray.Length;
 			
             using (Stream dataStream = request.GetRequestStream())
             	dataStream.Write(byteArray, 0, byteArray.Length);
 			
-			XmlDocument response = new XmlDocument();
 			string xml = string.Empty;
             using (HttpWebResponse r = request.GetResponse() as HttpWebResponse)
                 using (StreamReader reader = new StreamReader(r.GetResponseStream()))
 					xml = reader.ReadToEnd();
-			
-			string boundary = "--AxB9sl3299asdjvbA";
-			
-			if (xml.StartsWith(boundary))
-			{
-				string[] tmp = Regex.Split(xml, boundary);
-				
-				tmp = Regex.Split(tmp[2], "base64");
-				
-				string report = tmp[1].Replace("\r\n", string.Empty);
-				
-				//The following lines are a shim to get around an issue with the base64 encoded report nexpose returns.
-				string t = report.Remove(0, report.Length - 4);	
-				if (t == "DQo=")
-					report = report.Remove(report.Length - 4);
-			
-				byte[] reportBytes = Convert.FromBase64String(report);
-				
-				return reportBytes as object;
-			}
-			else
-			{
-				response.LoadXml(xml);
-			
-				if (response.FirstChild.FirstChild != null && response.FirstChild.FirstChild.Name == "Failure")	
-					throw new Exception(response.FirstChild.FirstChild.FirstChild.InnerText);
-			}
-			
-			return response as object; 
+		
+			return XDocument.Parse (xml);
 		}
 	
 		public void Dispose()
