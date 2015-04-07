@@ -6,20 +6,7 @@ using nexposesharp;
 namespace nexposesharp
 {
 	public class NexposeUtil
-	{
-		public NexposeUtil ()
-		{
-		}
-		
-		public static XmlNode GenerateReportConfig(string name, string templateID, string reportID, string description, NexposeReportFormat formatType, Dictionary<NexposeReportFilterType, string> filters, List<string> users, DateTime baseline, bool generateNow)
-		{
-			XmlDocument doc = new XmlDocument();
-			
-
-			
-			return doc.FirstChild;
-		}
-		
+	{		
 		public static XmlNode GenerateAdHocReportConfig(string templateID, NexposeReportFormat formatType, Dictionary<NexposeReportFilterType, string> filters)
 		{
 			XmlDocument doc = new XmlDocument();
