@@ -8,4 +8,3 @@ namespace nexposesharp
 		v12 = 2,
 	}
 }
-
